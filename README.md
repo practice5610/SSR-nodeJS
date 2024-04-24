@@ -53,6 +53,33 @@ ssr-nodejs-app/
 ├── package.json        # Project dependencies and scripts
 └── README.md           # Project README file
 
+ssr-nodejs-app/
+│
+├── controllers/        # Contains controller logic
+│   ├── dataController.js
+│   └── ...
+│
+├── models/             # Contains Mongoose models
+│   ├── dataModel.js
+│   └── ...
+│
+├── routes/             # Contains Express routes
+│   ├── index.js
+│   └── ...
+│
+├── views/              # Contains EJS templates
+│   ├── index.ejs
+│   └── ...
+│
+├── public/             # Contains static assets
+│   ├── css/
+│   ├── js/
+│   └── ...
+│
+├── .env                # Environment variables
+├── app.js              # Main application file
+├── package.json        # Project dependencies and scripts
+└── README.md           # Project README file
 
 
 
