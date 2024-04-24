@@ -23,6 +23,36 @@ This project is a server-side rendering (SSR) Node.js application built using Ja
   <li>Dotenv: Library for loading environment variables from a .env file.</li>
 </ul>
 
+<h2>Folder Structure</h2>
+
+ssr-nodejs-app/
+│
+├── controllers/        # Contains controller logic
+│   ├── userController.js
+│   └── ...
+│
+├── models/             # Contains Mongoose models
+│   ├── userModel.js
+│   └── ...
+│
+├── routes/             # Contains Express routes
+│   ├── userRoute
+│   └── ...
+│
+├── views/              # Contains EJS templates
+│   ├── index.ejs
+│   └── user/edit.ejs ,view.ejs ,add.ejs
+│
+├── public/             # Contains static assets
+│   ├── css/
+│   ├── js/
+│   └── ...
+│
+├── .env                # Environment variables
+├── server.js              # Main application file
+├── package.json        # Project dependencies and scripts
+└── README.md           # Project README file
+
 
 
 
