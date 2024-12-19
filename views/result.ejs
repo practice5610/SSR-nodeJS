@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search Results</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/bootstrap.min.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      .full-page-overlay {
+        background-image: url("https://performdigi.com/8.jpg");
+        background-size: cover;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 1;
+        pointer-events: none;
+      }
+      .container-content {
+        position: relative;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full-page-overlay"></div>
+
+    <div class="container py-3">
+      <h1>Search Results for: <%= query %></h1>
+      <script
+        async
+        src="https://cse.google.com/cse.js?cx=e7fa678784b5ffdad"
+      ></script>
+      <div class="gcse-search"></div>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      var pageOptions = {
+        pubId: "partner-pub-8923228532435882",
+        adsafe: "medium",
+        styleId: "7970653824",
+        adtest: "on",
+        relatedSearchTargeting: "query",
+        query: "<%= query %>",
+        resultsPageBaseUrl: "https://performdigi.com/result.php",
+        resultsPageQueryParam: "q",
+      };
+
+      var adblock = {
+        container: "afscontainer1",
+        number: 4,
+        width: 1920,
+      };
+
+      var rsblock = {
+        container: "afscontainer2",
+        relatedSearches: 10,
+        width: 1920,
+      };
+
+      // Initialize Google Custom Search Ads with dynamic keywords
+      _googCsa("ads", pageOptions, adblock, rsblock);
+    </script>
+  </body>
+</html>
