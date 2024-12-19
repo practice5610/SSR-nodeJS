@@ -1,3 +1,4 @@
+const JavaScriptObfuscator = require("javascript-obfuscator");
 const express = require("express");
 const app = express();
 require("dotenv").config();
@@ -12,7 +13,7 @@ app.use(express.static("public"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+const domain = "https://search1.quizzz.in";
 const getRandomQuery = () => {
   const queries = [
     "commercial trash bins",
@@ -38,11 +39,77 @@ const getRandomImage = () => {
 app.get("/", async (req, res) => {
   const query = getRandomQuery(); // Generate dynamic query
   const image = getRandomImage(); // Generate random image link
-  res.render("index", { query, image }); // Pass query and image to EJS
+  const jsCode = `
+    const pageOptions = {
+      pubId: "partner-pub-9367421583192509",
+      adsafe: "medium",
+      styleId: "7970653824",
+      adtest: "on",
+      relatedSearchTargeting: "query",
+      query: "${query}", // Inject dynamic query
+      resultsPageBaseUrl: "${domain}/result.php",
+      resultsPageQueryParam: "q",
+    };
+
+    const adblock = {
+      container: "afscontainer1",
+      number: 4,
+      width: 1920,
+    };
+
+    const rsblock = {
+      container: "afscontainer2",
+      relatedSearches: 10,
+      width: 1920,
+    };
+
+    _googCsa("ads", pageOptions, adblock, rsblock);
+  `;
+  console.log("codeee", jsCode);
+  // Obfuscate the JavaScript code
+  const obfuscatedCode = JavaScriptObfuscator.obfuscate(jsCode, {
+    compact: true,
+    controlFlowFlattening: true,
+  }).getObfuscatedCode();
+
+  res.render("index", { image, obfuscatedCode });
 });
 app.get("/result.php", (req, res) => {
   const query = req.query.q; // Get the 'q' parameter from the URL
-  res.render("result", { query }); // Render the EJS template with the query
+  const jsCode = `
+    const pageOptions = {
+      pubId: "partner-pub-9367421583192509",
+      adsafe: "medium",
+      styleId: "7970653824",
+      adtest: "on",
+      relatedSearchTargeting: "query",
+      query: "${query}", // Inject dynamic query
+      resultsPageBaseUrl: "${domain}/result.php",
+      resultsPageQueryParam: "q",
+    };
+
+    const adblock = {
+      container: "afscontainer1",
+      number: 4,
+      width: 1920,
+    };
+
+    const rsblock = {
+      container: "afscontainer2",
+      relatedSearches: 10,
+      width: 1920,
+    };
+
+    _googCsa("ads", pageOptions, adblock, rsblock);
+  `;
+
+  // Obfuscate the JavaScript code
+  const obfuscatedCode = JavaScriptObfuscator.obfuscate(jsCode, {
+    compact: true,
+    controlFlowFlattening: true,
+  }).getObfuscatedCode();
+
+  res.render("result", { query, obfuscatedCode }); // Render the EJS template with the query
 });
 
 // start server

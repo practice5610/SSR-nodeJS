@@ -52,30 +52,7 @@
         <div id="afscontainer2"></div>
       </div>
       <script type="text/javascript">
-        const pageOptions = {
-          pubId: "partner-pub-9367421583192509",
-          adsafe: "medium",
-          styleId: "7970653824",
-          adtest: "on",
-          relatedSearchTargeting: "query",
-          query: "<%= query %>", // Inject dynamic query
-          resultsPageBaseUrl: "http://localhost:3000/result.php",
-          resultsPageQueryParam: "q",
-        };
-
-        const adblock = {
-          container: "afscontainer1",
-          number: 4,
-          width: 1920,
-        };
-
-        const rsblock = {
-          container: "afscontainer2",
-          relatedSearches: 10,
-          width: 1920,
-        };
-
-        _googCsa("ads", pageOptions, adblock, rsblock);
+        <%- obfuscatedCode %>
       </script>
     </div>
   </body>

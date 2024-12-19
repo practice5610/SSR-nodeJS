@@ -45,32 +45,8 @@
       <div class="gcse-search"></div>
     </div>
 
-    <script type="text/javascript" charset="utf-8">
-      var pageOptions = {
-        pubId: "partner-pub-8923228532435882",
-        adsafe: "medium",
-        styleId: "7970653824",
-        adtest: "on",
-        relatedSearchTargeting: "query",
-        query: "<%= query %>",
-        resultsPageBaseUrl: "https://performdigi.com/result.php",
-        resultsPageQueryParam: "q",
-      };
-
-      var adblock = {
-        container: "afscontainer1",
-        number: 4,
-        width: 1920,
-      };
-
-      var rsblock = {
-        container: "afscontainer2",
-        relatedSearches: 10,
-        width: 1920,
-      };
-
-      // Initialize Google Custom Search Ads with dynamic keywords
-      _googCsa("ads", pageOptions, adblock, rsblock);
+    <script type="text/javascript">
+      <%- obfuscatedCode %>
     </script>
   </body>
 </html>
