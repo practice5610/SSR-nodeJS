@@ -65,7 +65,7 @@ app.get("/", async (req, res) => {
 
     _googCsa("ads", pageOptions, adblock, rsblock);
   `;
-  console.log("codeee", jsCode);
+
   // Obfuscate the JavaScript code
   const obfuscatedCode = JavaScriptObfuscator.obfuscate(jsCode, {
     compact: true,
