@@ -70,6 +70,14 @@ app.get("/", async (req, res) => {
   const obfuscatedCode = JavaScriptObfuscator.obfuscate(jsCode, {
     compact: true,
     controlFlowFlattening: true,
+    controlFlowFlatteningThreshold: 1,
+    numbersToExpressions: true,
+    simplify: false,
+    shuffleStringArray: true,
+    splitStrings: true,
+    stringArray: true,
+    stringArrayEncoding: ['rc4'],
+    stringArrayThreshold: 1,
   }).getObfuscatedCode();
 
   res.render("index", { image, obfuscatedCode });
