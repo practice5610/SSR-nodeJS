@@ -46,7 +46,7 @@ app.get("/", async (req, res) => {
       adtest: "on",
       relatedSearchTargeting: "query",
       query: "Mesothelioma attorneys,Asbestos lawyers,Best car insurance,Life insurance, personal loan",
-      resultsPageBaseUrl: "${domain}/result.php",
+      resultsPageBaseUrl: "${domain}/attorneys-result.php",
       resultsPageQueryParam: "q",
     };
 
@@ -77,11 +77,17 @@ app.get("/", async (req, res) => {
     stringArray: true,
     stringArrayEncoding: ["rc4"],
     stringArrayThreshold: 1,
+    deadCodeInjection: true,
+    deadCodeInjectionThreshold: 1,
+    disableConsoleOutput: true,
+    renameGlobals: true,
+    selfDefending: true,
+    transformObjectKeys: true,
   }).getObfuscatedCode();
 
   res.render("index", { image, obfuscatedCode });
 });
-app.get("/result.php", (req, res) => {
+app.get("/attorneys-result.php", (req, res) => {
   const query = req.query.q; // Get the 'q' parameter from the URL
   const jsCode = `
     const pageOptions = {
@@ -91,7 +97,7 @@ app.get("/result.php", (req, res) => {
       adtest: "on",
       relatedSearchTargeting: "query",
      query: "Mesothelioma attorneys,Asbestos lawyers,Best car insurance,Life insurance, personal loan",
-      resultsPageBaseUrl: "${domain}/result.php",
+      resultsPageBaseUrl: "${domain}/attorneys-result.php",
       resultsPageQueryParam: "q",
     };
 
@@ -114,6 +120,20 @@ app.get("/result.php", (req, res) => {
   const obfuscatedCode = JavaScriptObfuscator.obfuscate(jsCode, {
     compact: true,
     controlFlowFlattening: true,
+    controlFlowFlatteningThreshold: 1,
+    numbersToExpressions: true,
+    simplify: false,
+    shuffleStringArray: true,
+    splitStrings: true,
+    stringArray: true,
+    stringArrayEncoding: ["rc4"],
+    stringArrayThreshold: 1,
+    deadCodeInjection: true,
+    deadCodeInjectionThreshold: 1,
+    disableConsoleOutput: true,
+    renameGlobals: true,
+    selfDefending: true,
+    transformObjectKeys: true,
   }).getObfuscatedCode();
 
   res.render("result", { query, obfuscatedCode }); // Render the EJS template with the query
