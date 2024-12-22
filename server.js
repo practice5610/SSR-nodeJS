@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const domain = "https://search.quizzz.in";
+const domain = "https://search1.quizzz.in";
 const getRandomQuery = () => {
   const queries = [
     "commercial trash bins",
