@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const domain = "https://search1.quizzz.in";
+const domain = "https://search.quizzz.in";
 const getRandomQuery = () => {
   const queries = [
     "commercial trash bins",
@@ -37,16 +37,15 @@ const getRandomImage = () => {
 };
 // start requests
 app.get("/", async (req, res) => {
-  const query = getRandomQuery(); // Generate dynamic query
   const image = getRandomImage(); // Generate random image link
   const jsCode = `
     const pageOptions = {
-      pubId: "partner-pub-9367421583192509",
+      pubId: "partner-pub-5923063580321664",
       adsafe: "medium",
       styleId: "7970653824",
       adtest: "on",
       relatedSearchTargeting: "query",
-      query: "${query}", // Inject dynamic query
+      query: "Mesothelioma attorneys,Asbestos lawyers,Best car insurance,Life insurance, personal loan",
       resultsPageBaseUrl: "${domain}/result.php",
       resultsPageQueryParam: "q",
     };
@@ -76,7 +75,7 @@ app.get("/", async (req, res) => {
     shuffleStringArray: true,
     splitStrings: true,
     stringArray: true,
-    stringArrayEncoding: ['rc4'],
+    stringArrayEncoding: ["rc4"],
     stringArrayThreshold: 1,
   }).getObfuscatedCode();
 
@@ -86,12 +85,12 @@ app.get("/result.php", (req, res) => {
   const query = req.query.q; // Get the 'q' parameter from the URL
   const jsCode = `
     const pageOptions = {
-      pubId: "partner-pub-9367421583192509",
+      pubId: "partner-pub-5923063580321664",
       adsafe: "medium",
-      styleId: "7970653824",
+      styleId: "3383664105",
       adtest: "on",
       relatedSearchTargeting: "query",
-      query: "${query}", // Inject dynamic query
+     query: "Mesothelioma attorneys,Asbestos lawyers,Best car insurance,Life insurance, personal loan",
       resultsPageBaseUrl: "${domain}/result.php",
       resultsPageQueryParam: "q",
     };
@@ -121,7 +120,7 @@ app.get("/result.php", (req, res) => {
 });
 
 // start server
-const port = process.env.port || 3000;
+const port = process.env.port || 3002;
 app.listen(port, () => {
   console.log(`app start listining on port ${[port]}`);
 });
