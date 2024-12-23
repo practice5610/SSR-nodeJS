@@ -140,7 +140,7 @@ app.get("/attorneys-result.php", (req, res) => {
 });
 
 // start server
-const port = process.env.port || 3000;
+const port = process.env.port || 3002;
 app.listen(port, () => {
   console.log(`app start listining on port ${[port]}`);
 });
