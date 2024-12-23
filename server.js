@@ -42,7 +42,7 @@ app.get("/", async (req, res) => {
     const pageOptions = {
       pubId: "partner-pub-5923063580321664",
       adsafe: "medium",
-      styleId: "7970653824",
+      styleId: "3383664105",
       adtest: "on",
       relatedSearchTargeting: "query",
       query: "Mesothelioma attorneys,Asbestos lawyers,Best car insurance,Life insurance, personal loan",
