@@ -33,7 +33,7 @@ const getRandomQuery = () => {
 };
 const getRandomImage = () => {
   const imageIndex = Math.floor(Math.random() * 13) + 1; // Random number between 1 and 13
-  return `https://performdigi.com/img${imageIndex}.png`;
+  return `/img/gandiimage.jpg`;
 };
 // start requests
 app.get("/", async (req, res) => {
